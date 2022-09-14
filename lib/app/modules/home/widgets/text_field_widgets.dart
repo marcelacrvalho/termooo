@@ -1,34 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:get/route_manager.dart';
+import 'package:termooo/app/modules/home/controllers/home_controllers.dart';
 
 class CustomTextField extends StatelessWidget {
-  late Color color;
+  final Color color;
 
-  CustomTextField(this.color, {Key? key}) : super(key: key);
+  const CustomTextField({Key? key, required this.color}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 200,
       width: 100,
-      child: GestureDetector(
-        onDoubleTap: (){
-          print('AO CLICAR DUAS VEZES ESSA LETRA SE APAGARÁ');
-        },
-        child: TextField(
-          textAlign: TextAlign.center,
-          maxLines: 1,
-          maxLengthEnforcement: MaxLengthEnforcement.enforced,
-          maxLength: 1,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 20.0,
-          ),
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            filled: true,
-            fillColor: color,
-          ),
+      child:TextField(
+        textAlign: TextAlign.center,
+        maxLengthEnforcement: MaxLengthEnforcement.enforced,
+        maxLength: 1,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 20.0,
+        ),
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          filled: true,
+          fillColor: color,
         ),
       ),
     );
