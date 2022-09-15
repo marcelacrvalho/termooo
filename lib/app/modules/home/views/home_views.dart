@@ -32,58 +32,51 @@ class HomeView extends StatelessWidget {
                   fontSize: 20.0,
                 ),
               ),
-
               Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: CustomTextField(
-                      color: HomeController.to.isGreen.value
-                          ? Colors.green
-                          : Colors.black26,
+                      controller: HomeController.to.controller1,
+                      color: HomeController.to.fillColor[0],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: CustomTextField(
-                      color: HomeController.to.isGreen.value
-                          ? Colors.green
-                          : Colors.black26,
+                      controller: HomeController.to.controller1,
+                      color: HomeController.to.fillColor[1],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: CustomTextField(
-                      color: HomeController.to.isGreen.value
-                          ? Colors.green
-                          : Colors.black26,
+                      controller: HomeController.to.controller1,
+                      color: HomeController.to.fillColor[2],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: CustomTextField(
-                      color: HomeController.to.isGreen.value
-                          ? Colors.green
-                          : Colors.black26,
+                      controller: HomeController.to.controller1,
+                      color: HomeController.to.fillColor[3],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: CustomTextField(
-                      color: HomeController.to.isGreen.value
-                          ? Colors.green
-                          : Colors.black26,
+                      controller: HomeController.to.controller1,
+                      color: HomeController.to.fillColor[4],
                     ),
                   ),
                 ],
-              ),
+              )
             ],
           ),
         ),
       ),
     );
   }
-
 }
