@@ -4,9 +4,8 @@ import 'package:termooo/app/modules/home/models/word.dart';
 
 class HomeController extends GetxController {
   static HomeController get to => Get.put(HomeController());
-  late String randomWord;
 
-  List<TextEditingController> contrl = [];
+  late String randomWord;
 
   var controller1 = TextEditingController();
   var controller2 = TextEditingController();
@@ -14,12 +13,10 @@ class HomeController extends GetxController {
   var controller4 = TextEditingController();
   var controller5 = TextEditingController();
 
-  RxBool isGreen0 = false.obs;
-  RxBool isGreen1 = false.obs;
-  RxBool isGreen2 = false.obs;
-  RxBool isGreen3 = false.obs;
-  RxBool isGreen4 = false.obs;
+  late RxBool checked = false.obs;
 
+  Color colorRight = const Color(0XFF3aa394);
+  Color colorWrongPosition = const Color(0XFFd3ad69);
   RxList<Color> fillColor = [
     Colors.black26,
     Colors.black26,
@@ -29,6 +26,8 @@ class HomeController extends GetxController {
   ].obs;
 
   late List<String> randomWordList;
+  late String userInput;
+  late List<String> userInputList;
 
   @override
   void onInit() {
@@ -36,51 +35,43 @@ class HomeController extends GetxController {
     randomWord = word.getRandomWord();
     randomWordList =
         List<String>.generate(randomWord.length, (index) => randomWord[index]);
-
-    print(randomWord);
     super.onInit();
   }
 
   void checkWord() {
-    _checkIfItsCorrect();
-  }
-
-  void _checkIfItsCorrect() {
-    String userInput = controller1.text +
+    userInput = controller1.text +
         controller2.text +
         controller3.text +
         controller4.text +
         controller5.text;
+    userInputList =
+    List<String>.generate(userInput.length, (index) => userInput[index]);
+    _checkIfItsCorrect();
+    if(!checked.value) {
+      _checkIfItsExist();
+    }
+  }
 
-    var userInputList =
-        List<String>.generate(userInput.length, (index) => userInput[index]);
-
+  void _checkIfItsCorrect() {
     if (userInput == randomWord) {
-      fillColor[0] = Colors.green;
-      fillColor[1] = Colors.green;
-      fillColor[2] = Colors.green;
-      fillColor[3] = Colors.green;
-      fillColor[4] = Colors.green;
-
+      for(int i = 0; i < randomWordList.length; i++) {
+        fillColor[i] = colorRight;
+      }
+      checked.value = true;
     } else if (userInputList[0] == randomWordList[0]) {
-      fillColor[0] = Colors.green;
-      isGreen0.value = true;
     }
-    if (userInputList[1] == randomWordList[1]) {
-      fillColor[1] = Colors.green;
-      isGreen1.value = true;
-    }
-    if (userInputList[2] == randomWordList[2]) {
-      fillColor[2] = Colors.green;
-      isGreen2.value = true;
-    }
-    if (userInputList[3] == randomWordList[3]) {
-      fillColor[3] = Colors.green;
-      isGreen3.value = true;
+    for(int i = 0; i < userInputList.length; i++) {
+      if (userInputList[i] == randomWordList[i]) {
+        fillColor[i] = colorRight;
+      }
     }
   }
 
   void _checkIfItsExist() {
-
+    for(int i = 0; i < userInputList.length; i++) {
+      if(randomWordList.contains(userInputList[i]) && fillColor[i] != colorRight) {
+        fillColor[i] = colorWrongPosition;
+      }
+    }
   }
 }
