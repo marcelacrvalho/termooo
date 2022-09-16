@@ -14,11 +14,11 @@ class HomeController extends GetxController {
   var controller4 = TextEditingController();
   var controller5 = TextEditingController();
 
+  RxBool isGreen0 = false.obs;
   RxBool isGreen1 = false.obs;
   RxBool isGreen2 = false.obs;
   RxBool isGreen3 = false.obs;
   RxBool isGreen4 = false.obs;
-  RxBool isGreen5 = false.obs;
 
   RxList<Color> fillColor = [
     Colors.black26,
@@ -64,14 +64,23 @@ class HomeController extends GetxController {
 
     } else if (userInputList[0] == randomWordList[0]) {
       fillColor[0] = Colors.green;
-      isGreen1.value = true;
+      isGreen0.value = true;
     }
     if (userInputList[1] == randomWordList[1]) {
       fillColor[1] = Colors.green;
+      isGreen1.value = true;
+    }
+    if (userInputList[2] == randomWordList[2]) {
+      fillColor[2] = Colors.green;
       isGreen2.value = true;
+    }
+    if (userInputList[3] == randomWordList[3]) {
+      fillColor[3] = Colors.green;
+      isGreen3.value = true;
     }
   }
 
   void _checkIfItsExist() {
+
   }
 }
